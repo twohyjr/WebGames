@@ -21,7 +21,7 @@ addEventListener("keydown", function (e) {
 
   if (e.keyCode == 38) { //pressed up (key: arrow Up)
     if (!keysDown[38]) {
-     //    moveBlocksUp();
+		moveBlocksUp();
     }
   }
 
@@ -31,13 +31,13 @@ addEventListener("keydown", function (e) {
     }
   }
 
-  if (e.keyCode == 37) { // pressed up (key: arrow Left)
+  if (e.keyCode == 37) { // pressed left (key: arrow Left)
    if (!keysDown[37]) {
      //    moveBlocksLeft();
    }
   }
 
-  if (e.keyCode == 39) { // pressed up (key: arrow Right)
+  if (e.keyCode == 39) { // pressed right (key: arrow Right)
    if (!keysDown[39]) {
      //    moveBlocksRight();
    }

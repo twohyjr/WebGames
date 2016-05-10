@@ -27,7 +27,7 @@ function resetTextGrid(){
 
 //x = rows   y = columns
 function updateGridValue(x,y,value){
-     grid[x][y] = value;
+     grid[y][x + 1] = value;
 }
 
 //Prints out the updated grid

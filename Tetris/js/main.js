@@ -5,7 +5,4 @@ function main(){
      drawGrid();
      
 }
-
-
-
 main();
