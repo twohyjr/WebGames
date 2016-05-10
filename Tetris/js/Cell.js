@@ -31,4 +31,16 @@ function Cell(x,y) {
 		this.cellRight = function(){
 			cellXPoint++;
 		};
+
+
+		this.checkMoveCell = function(leftCount,downCount,rightCount,upCount){
+			var xCheck = (rightCount - leftCount) + cellXPoint + 1;
+			var yCheck = (downCount - upCount) + cellYPoint + 1;
+			var gridValue = getGridValue(xCheck,yCheck);
+			if(gridValue == "#"){
+				return false;
+			}else{
+				return true;
+			}
+		}
 }

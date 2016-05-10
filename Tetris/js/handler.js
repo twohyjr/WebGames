@@ -5,9 +5,11 @@ var count=1;
 
 var gameObjects = [];
 
+var currentShape;
+
 function hInit(){
-	var x = new GameObject(5,0);
-	gameObjects.push(x);
+	currentShape = new GameObject();
+	gameObjects.push(currentShape);
 
 }
 
@@ -41,5 +43,23 @@ function hTick(){
 function hRender(){
 	for (var i = 0; i < gameObjects.length; i++) {
 		gameObjects[i].render(ctx);
+	}
+}
+
+function hRotateShape(){
+	currentShape.rotateShape();
+}
+
+function hMoveShape(direction){
+	switch(direction) {
+		case "left":
+			currentShape.shiftLeft();
+			break;
+		case "right":
+			currentShape.shiftRight();
+			break;
+		case "down":
+				currentShape.shiftDown();
+				break;
 	}
 }
