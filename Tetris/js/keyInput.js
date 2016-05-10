@@ -20,27 +20,19 @@ var keysDown = {};
 addEventListener("keydown", function (e) {
 
   if (e.keyCode == 38) { //pressed up (key: arrow Up)
-    if (!keysDown[38]) {
-		moveBlocksUp();
-    }
+    hRotateShape();
   }
 
   if (e.keyCode == 40) { // P2 pressed down (key: arrow down)
-    if (!keysDown[40]) {
-     //  moveBlocksDown();
-    }
+    hMoveShape("down");
   }
 
   if (e.keyCode == 37) { // pressed left (key: arrow Left)
-   if (!keysDown[37]) {
-     //    moveBlocksLeft();
-   }
+    hMoveShape("left");
   }
 
   if (e.keyCode == 39) { // pressed right (key: arrow Right)
-   if (!keysDown[39]) {
-     //    moveBlocksRight();
-   }
+    hMoveShape("right");
   }
 
   keysDown[e.keyCode] = true;
