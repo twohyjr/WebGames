@@ -17,6 +17,7 @@ function hCheckCollision(){
 }
 
 function hTick(){
+	resetTextGrid();
 		var moveDown = false;
      currentTime++;
      if(currentTime == timerDuration){
@@ -26,7 +27,7 @@ function hTick(){
      }
 
 		 //Ticks all of the game objects in the game
-		 for (i = 0; i < gameObjects.length; i++) {
+		 for (var i = 0; i < gameObjects.length; i++) {
 			 if(moveDown == true){
 				 gameObjects[i].shiftDown();
 			 }
@@ -34,11 +35,11 @@ function hTick(){
 		 }
 
 		 moveDown = false;
-
+	printGrid();
 }
 
 function hRender(){
-	for (i = 0; i < gameObjects.length; i++) {
+	for (var i = 0; i < gameObjects.length; i++) {
 		gameObjects[i].render(ctx);
 	}
 }

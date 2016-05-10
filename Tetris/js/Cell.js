@@ -1,17 +1,34 @@
 function Cell(x,y) {
-	var xPoint = x;
-	var yPoint = y;
+	var cellXPoint = x;
+	var cellYPoint = y;
 
-	var xPos = xPoint * CELL_SIZE;
-	var yPos = yPoint * CELL_SIZE;
+	var cellXPos = cellXPoint * CELL_SIZE;
+	var cellYPos = cellYPoint * CELL_SIZE;
 
     this.tick = function () {
-			updateGridValue(xPoint,yPoint,"x");
-			printGrid();
+			cellXPos = cellXPoint * CELL_SIZE;
+			cellYPos = cellYPoint * CELL_SIZE;
+			updateGridValue(cellXPoint,cellYPoint,"x");
     };
 
 		this.render = function(ctx){
 			ctx.fillStyle = "blue";
-			ctx.fillRect(xPos,yPos,CELL_SIZE,CELL_SIZE);
-		}
+			ctx.fillRect(cellXPos,cellYPos,CELL_SIZE,CELL_SIZE);
+		};
+
+		this.cellUp = function(){
+			cellYPoint--;
+		};
+
+		this.cellDown = function(){
+			cellYPoint++;
+		};
+
+		this.cellLeft = function(){
+			cellXPoint--;
+		};
+
+		this.cellRight = function(){
+			cellXPoint++;
+		};
 }

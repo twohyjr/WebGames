@@ -8,19 +8,39 @@ function GameObject(x,y) {
 	var cells = [];
 
     this.tick = function () {
-			for (i = 0; i < cells.length; i++) {
+			for (var i = 0; i < cells.length; i++) {
 				cells[i].tick();
 			}
     };
 
 		this.render = function(ctx){
-			for (i = 0; i < cells.length; i++) {
+			for (var i = 0; i < cells.length; i++) {
 				cells[i].render(ctx);
 			}
 		};
 
-		this.shiftDown = function(){
+		this.shiftUp = function(){
+			for (var i = 0; i < cells.length; i++) {
+				cells[i].cellUp();
+			}
+		};
 
+		this.shiftDown = function(){
+			for (var i = 0; i < cells.length; i++) {
+				cells[i].cellDown();
+			}
+		};
+
+		this.shiftLeft = function(){
+			for (var i = 0; i < cells.length; i++) {
+				cells[i].cellLeft();
+			}
+		};
+
+		this.shiftRight = function(){
+			for (var i = 0; i < cells.length; i++) {
+				cells[i].cellRight();
+			}
 		};
 
 		function createShapes(){
