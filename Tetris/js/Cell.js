@@ -10,8 +10,8 @@ function Cell(x,y,rowCount,color) {
 	var currentValue = "x";
 
 	// var display = "point";
-	var display = "row";
-	// var display = "none";
+	// var display = "row";
+	var display = "none";
 
     this.tick = function () {
 			cellXPos = (cellXPoint - 1) * CELL_SIZE;
