@@ -7,6 +7,7 @@ var CANVAS_HEIGHT = CELL_SIZE * CELLS_HEIGH;
 
 var canvas;
 var ctx,gridCtx;
+var isVisible = true;
 
 function createCanvas(){
      //main game board creation
@@ -26,6 +27,7 @@ function createCanvas(){
 }
 
 function drawGrid(){
+  if(isVisible == true){
     for (var x = 0; x <= CANVAS_WIDTH; x += CELL_SIZE) {
         gridCtx.moveTo(0.5 + x, 0);
         gridCtx.lineTo(0.5 + x, CANVAS_HEIGHT);
@@ -36,4 +38,6 @@ function drawGrid(){
     }
     gridCtx.strokeStyle = "white";
     gridCtx.stroke();
+  }
+
 }

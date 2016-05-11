@@ -1,7 +1,6 @@
 var running = false;
 
 function doGameLoop(){
-	hInit();
 
      var loop = function() {
 

@@ -16,8 +16,10 @@ function resetTextGrid(){
           for(var j = 0; j < CELLS_WIDE + 2; j++){
                if(j == 0 || j == CELLS_WIDE + 1){
                     grid[i][j] = "#";
-               }else if (i == 21 | i == 0) {
-                    grid[i][j] = "#";
+               }else if (i == 21) {
+                    grid[i][j] = "f";
+               }else if(i == 0){
+                  grid[i][j] = "#";
                }else{
                     grid[i][j] = 0;
                }
@@ -27,7 +29,7 @@ function resetTextGrid(){
 
 //x = rows   y = columns
 function updateGridValue(x,y,value){
-     grid[y+1][x + 1] = value;
+     grid[y][x] = value;
 }
 
 function getGridValue(x,y){
