@@ -5,19 +5,96 @@ var gameObjects = [];
 
 var currentObject;
 
+var nextPieceObject;
+
+var nextPieceName;
+
+var gameStarted = false;
+
 function hInit(){
+	nextPieceObject = new GameObject();
 	hAddObject();
+
 }
 
 function hCheckCollision(){
 
 }
 
+function hSetGameStarted(isStarted){
+	gameStarted = true;
+	drawNext();
+}
+
 function hAddObject(){
-	var x = new GameObject();
-	gameObjects.push(x);
-	currentObject = x;
-				currentObject.tick();
+	currentObject = nextPieceObject;
+	gameObjects.push(currentObject);
+	currentObject.tick();
+
+	nextPieceObject = new GameObject();
+	nextPieceName = nextPieceObject.getShapeTitle();
+	drawNext();
+}
+
+//Draws all of the next pieces on the screen
+function drawNext(){
+
+if(gameStarted == true){
+		nextCtx.clearRect(0, 0, nextCanvas.width, nextCanvas.height);
+	switch (nextPieceName) {
+		case "O":
+			nextCtx.fillStyle = OCOLOR;
+			nextCtx.fillRect(110,30,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(110 + (CELL_SIZE + 2),30,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(110 ,30 + (CELL_SIZE + 2),CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(110 + (CELL_SIZE + 2),30 + (CELL_SIZE + 2),CELL_SIZE,CELL_SIZE);
+		break;
+		case "I":
+			nextCtx.fillStyle = ICOLOR;
+			nextCtx.fillRect(70,50,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(70 + (CELL_SIZE * 1) + 2,50,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(70 + (CELL_SIZE * 2) + 4,50,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(70 + (CELL_SIZE * 3) + 6,50,CELL_SIZE,CELL_SIZE);
+			break;
+		case "J":
+			nextCtx.fillStyle = JCOLOR;
+			nextCtx.fillRect(80,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80 + (CELL_SIZE * 1) + 2,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80 + (CELL_SIZE * 2) + 4,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80,70 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			break;
+
+		case "L":
+			nextCtx.fillStyle = LCOLOR;
+			nextCtx.fillRect(80,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80 + (CELL_SIZE * 1) + 2,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80 + (CELL_SIZE * 2) + 4,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(80 + (CELL_SIZE * 2) + 4,70 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			break;
+		case "T":
+			nextCtx.fillStyle = TCOLOR;
+			nextCtx.fillRect(90,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 1) + 2,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 2) + 4,70,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + CELL_SIZE + 2,70 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			break;
+		case "S":
+			nextCtx.fillStyle = SCOLOR;
+			nextCtx.fillRect(90,75,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 1) + 2,75,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 2) + 4,75 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + CELL_SIZE + 2,75 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			break;
+		case "Z":
+			nextCtx.fillStyle = ZCOLOR;
+			nextCtx.fillRect(90,75 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 1) + 2,75,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + (CELL_SIZE * 2) + 4,75,CELL_SIZE,CELL_SIZE);
+			nextCtx.fillRect(90 + CELL_SIZE + 2,75 - CELL_SIZE - 2,CELL_SIZE,CELL_SIZE);
+			break;
+	}
+}
+
 }
 
 var count = 0;
@@ -122,6 +199,8 @@ function removeRow(rowToRemove){
 			gameObjects[i].removeCellsAtRow(rowToRemove);
 		}
 }
+
+
 
 
 }

@@ -36,6 +36,9 @@ function Cell(x,y,rowCount,color) {
 
 					break;
 			}
+
+
+			//
 		};
 
 		this.shift = function(direction){

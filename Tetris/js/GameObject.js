@@ -2,6 +2,7 @@ function GameObject() {
 	var cells = [];
 	var rotateCount = 0;
 	var shape;
+	var color;
 	determineShape();
 
 	this.tick = function () {
@@ -65,27 +66,30 @@ function GameObject() {
 					}
 		};
 
+		this.getShapeTitle = function(){
+			return shape;
+		};
 
 		function determineShape(){
 			var numberOfShapes = 7;
 			var whichShape = Math.ceil(getRandomArbitrary(0,numberOfShapes));
-			// var whichShape = 5;
+			// var whichShape = 1;
 			switch (whichShape) {
 				case 1:
 					createZShape();
-					shape = "z";
+					shape = "Z";
 					break;
 				case 2:
 					createSquareShape();
-					shape = "square";
+					shape = "O";
 					break;
 				case 3:
 					createSShape();
-					shape = "s";
+					shape = "S";
 					break;
 				case 4:
 					createLineShape();
-					shape = "line";
+					shape = "I";
 					break;
 				case 5:
 					createJShape();
@@ -104,13 +108,13 @@ function GameObject() {
 
 		this.rotate = function(){
 			switch (shape) {
-				case "z":
+				case "Z":
 					rotateZShape();
 					break;
-				case "s":
+				case "S":
 					rotateSShape();
 					break;
-				case "line":
+				case "I":
 					rotateLineShape();
 					break;
 				case "J":
@@ -134,10 +138,10 @@ function GameObject() {
 		};
 
 		function createJShape(){
-			var cell1 = new Cell(7,2,2,"blue");
-			var cell2 = new Cell(6,2,2,"red");
-			var cell3 = new Cell(5,2,2,"green");
-			var cell4 = new Cell(5,1,1,"orange");
+			var cell1 = new Cell(7,2,2,JCOLOR);
+			var cell2 = new Cell(6,2,2,JCOLOR);
+			var cell3 = new Cell(5,2,2,JCOLOR);
+			var cell4 = new Cell(5,1,1,JCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -234,10 +238,10 @@ function GameObject() {
 		}
 
 		function createLShape(){
-			var cell1 = new Cell(4,2,2,"blue");
-			var cell2 = new Cell(5,2,2,"red");
-			var cell3 = new Cell(6,2,2,"green");
-			var cell4 = new Cell(6,1,1,"orange");
+			var cell1 = new Cell(4,2,2,LCOLOR);
+			var cell2 = new Cell(5,2,2,LCOLOR);
+			var cell3 = new Cell(6,2,2,LCOLOR);
+			var cell4 = new Cell(6,1,1,LCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -332,10 +336,10 @@ function GameObject() {
 		}
 
 		function createTShape(){
-			var cell1 = new Cell(6,1,1,"blue");
-			var cell2 = new Cell(7,2,2,"red");
-			var cell3 = new Cell(6,2,2,"green");
-			var cell4 = new Cell(5,2,2,"orange");
+			var cell1 = new Cell(6,1,1,TCOLOR);
+			var cell2 = new Cell(7,2,2,TCOLOR);
+			var cell3 = new Cell(6,2,2,TCOLOR);
+			var cell4 = new Cell(5,2,2,TCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -431,10 +435,10 @@ function GameObject() {
 		}
 
 		function createLineShape(){
-			var cell1 = new Cell(4,1,1,"blue");
-			var cell2 = new Cell(5,1,1,"red");
-			var cell3 = new Cell(6,1,1,"green");
-			var cell4 = new Cell(7,1,1,"orange");
+			var cell1 = new Cell(4,1,1,ICOLOR);
+			var cell2 = new Cell(5,1,1,ICOLOR);
+			var cell3 = new Cell(6,1,1,ICOLOR);
+			var cell4 = new Cell(7,1,1,ICOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -494,10 +498,10 @@ function GameObject() {
 		}
 
 		function createSquareShape(){
-			var cell1 = new Cell(5,1,1,"blue");
-			var cell2 = new Cell(6,1,1,"red");
-			var cell3 = new Cell(5,2,2,"green");
-			var cell4 = new Cell(6,2,2,"orange");
+			var cell1 = new Cell(5,1,1,OCOLOR);
+			var cell2 = new Cell(6,1,1,OCOLOR);
+			var cell3 = new Cell(5,2,2,OCOLOR);
+			var cell4 = new Cell(6,2,2,OCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -506,10 +510,10 @@ function GameObject() {
 		}
 
 		function createSShape(){
-			var cell1 = new Cell(6,1,1,"blue");
-			var cell2 = new Cell(7,1,1,"red");
-			var cell3 = new Cell(5,2,2,"green");
-			var cell4 = new Cell(6,2,2,"orange");
+			var cell1 = new Cell(6,1,1,SCOLOR);
+			var cell2 = new Cell(7,1,1,SCOLOR);
+			var cell3 = new Cell(5,2,2,SCOLOR);
+			var cell4 = new Cell(6,2,2,SCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);
@@ -569,10 +573,10 @@ function GameObject() {
 		}
 
 		function createZShape(){
-			var cell1 = new Cell(5,1,1,"blue");
-			var cell2 = new Cell(6,1,1,"red");
-			var cell3 = new Cell(6,2,2,"green");
-			var cell4 = new Cell(7,2,2,"orange");
+			var cell1 = new Cell(5,1,1,ZCOLOR);
+			var cell2 = new Cell(6,1,1,ZCOLOR);
+			var cell3 = new Cell(6,2,2,ZCOLOR);
+			var cell4 = new Cell(7,2,2,ZCOLOR);
 
 			cells.push(cell1);
 			cells.push(cell2);

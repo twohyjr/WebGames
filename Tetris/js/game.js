@@ -1,7 +1,7 @@
 var running = false;
 
 function doGameLoop(){
-
+     hSetGameStarted(true);
      var loop = function() {
 
           if(running){

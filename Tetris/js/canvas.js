@@ -1,18 +1,12 @@
-var CELL_SIZE = 40;
-var CELLS_WIDE = 10;
-var CELLS_HEIGH = 20;
-
-var CANVAS_WIDTH = CELL_SIZE * CELLS_WIDE;
-var CANVAS_HEIGHT = CELL_SIZE * CELLS_HEIGH;
-
-var canvas;
-var ctx,gridCtx;
+var canvas,nextCanvas,scoreCanvas;
+var ctx,gridCtx,nextCtx,scoreCtx;
 var isVisible = true;
 
 function createCanvas(){
      //main game board creation
      canvas = document.createElement("canvas");
      ctx = canvas.getContext("2d");
+     canvas.id = "game-canvas";
      canvas.width = CANVAS_WIDTH;
      canvas.height = CANVAS_HEIGHT;
      canvas.style.background = "#121212";
@@ -20,10 +14,17 @@ function createCanvas(){
 
      //Grid that overlays the game board
      var grid = document.createElement("canvas");
+     grid.id = "grid";
      gridCtx = grid.getContext("2d");
      grid.width = CANVAS_WIDTH + 1;
      grid.height = CANVAS_HEIGHT + 1;
      document.body.appendChild(grid);
+
+     //Next display for showing next peice
+     nextCanvas = document.getElementById("next-canvas");
+     nextCtx = nextCanvas.getContext("2d");
+
+
 }
 
 function drawGrid(){
@@ -36,7 +37,7 @@ function drawGrid(){
         gridCtx.moveTo(0, 0.5 + x);
         gridCtx.lineTo(CANVAS_WIDTH, 0.5 + x);
     }
-    gridCtx.strokeStyle = "white";
+    gridCtx.strokeStyle = "grey";
     gridCtx.stroke();
   }
 
