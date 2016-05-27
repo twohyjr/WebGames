@@ -11,9 +11,18 @@ var nextPieceName;
 
 var gameStarted = false;
 
+var level = 1;
+
+var myScore = 0;
+
+var myLines = 0;
+var nextLevel = 10
+
+
 function hInit(){
 	nextPieceObject = new GameObject();
 	hAddObject();
+aler("hello");
 
 }
 
@@ -177,6 +186,7 @@ function checkRowRemove(){
 	var topRow;
 
 if(removeRows == true){
+	score(rowsToRemove.length);
 	rowsRemovedCount = rowsToRemove.length;
 	topRow = rowsToRemove[0];
 	for(var i = 0; i < rowsToRemove.length; i++){
@@ -186,6 +196,48 @@ if(removeRows == true){
 
 
 	shiftAllRowsDown(topRow ,rowsRemovedCount);
+}
+
+//    1 Line							2 Lines								3 Lines								4 Lines
+//40 * (n + 1)	-----  100 * (n + 1)	-----  300 * (n + 1)	-----  1200 * (n + 1)
+// where level is n
+function getScore(lines){
+	var nowScore = 0;
+	switch (lines) {
+		case 1:
+			nowScore = 40 * (level + 1);
+			break;
+
+		case 2:
+			nowScore = 100 * (level + 1);
+			break;
+
+		case 3:
+			nowScore = 300 * (level + 1);
+			break;
+
+		case 4:
+			nowScore = 1200 * (level + 1);
+			break;
+	}
+
+	return nowScore;
+}
+
+function score(lines){
+	myScore += getScore(lines);
+	myLines += lines;
+
+	if(myLines  >= nextLevel){
+		level += 1;
+		nextLevel += 10;
+		timerDuration -= 10;
+		document.getElementById("level").innerHTML = "Level: " + level;
+
+	}
+
+	document.getElementById("score").innerHTML = myScore;
+	document.getElementById("lines").innerHTML = myLines;
 }
 
 function shiftAllRowsDown(row,shiftTimes){

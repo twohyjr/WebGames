@@ -1,5 +1,6 @@
 var canvas,nextCanvas,scoreCanvas;
 var ctx,gridCtx,nextCtx,scoreCtx;
+var score;
 var isVisible = true;
 
 function createCanvas(){
@@ -24,6 +25,8 @@ function createCanvas(){
      nextCanvas = document.getElementById("next-canvas");
      nextCtx = nextCanvas.getContext("2d");
 
+    scoreCanvas = document.getElementById("score-canvas");
+    score = document.getElementById("score");
 
 }
 
